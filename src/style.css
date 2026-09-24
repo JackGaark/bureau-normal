@@ -79,8 +79,8 @@ header > * {
 }
 
 .home img {
-  width: 53px;
-  height: 26.5px;
+  width: 52.5px;
+  height: 26.25px;
   display: block;
 }
 
@@ -100,7 +100,7 @@ nav a {
   position: relative;
   justify-self: start;
   margin-top: 11px;
-  color: rgba(230, 230, 230, .9);
+  color: #bab8b6; /* #333 after the header's difference blend over --paper */
   opacity: 0;
   visibility: hidden;
   transform: translateX(40px);
@@ -352,11 +352,26 @@ nav a[aria-current=page]:after {
   width: 24.83vw;
 }
 
+.emblem {
+  position: relative;
+}
+
 .emblem .eye {
   position: absolute;
   left: 19.72%;
   top: 23.41%;
   width: 13.2%;
+  animation: blink 4s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  0%, 96%, 100% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 0;
+  }
 }
 
 .emblem .eye:last-child {
@@ -715,5 +730,9 @@ main > section {
   *:not(.slides, #accueil, nav a) {
     scroll-behavior: auto !important;
     transition: none !important;
+  }
+
+  .emblem .eye {
+    animation: none;
   }
 }
