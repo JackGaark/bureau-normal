@@ -1,0 +1,1 @@
+Drop the Greed VF-TRIAL variable font here as `GreedVF-TRIAL.woff2` (and optionally `GreedVF-TRIAL.ttf`). The `@font-face` in `src/index.html` points at these names; until they exist the site falls back to Arial Narrow.
