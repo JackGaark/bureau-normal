@@ -1,9 +1,10 @@
 const projects = [
- {image:'stairs.png',name:'C&M',number:'03/12',alt:'Escalier courbe en bois, balustres et murs de brique'},
- {image:'facade.png',name:'Projet Sainte-Chose',number:'07/10',alt:'Maison de brique rouge dans un jardin automnal'},
- {image:'residence.png',name:'Résidence XYZ',number:'02/06',alt:'Enfilade de pièces lumineuses, parquet et murs de brique'},
- {image:'maison.png',name:'Maison Casa Home',number:'11/14',alt:'Intérieur avec escalier, colonnes claires et menuiserie en bois'},
- {image:'brick.png',name:'Projet Sainte-Chose',number:'04/10',alt:'Détail d’une façade en briques saillantes'}
+ {image:'slide-1.png',name:'C&M',number:'03/12',alt:'Escalier courbe en bois, balustres et murs de brique'},
+ {image:'slide-2.png',name:'Projet Sainte-Chose',number:'07/10',alt:'Maison de brique rouge dans un jardin automnal'},
+ {image:'slide-3.png',name:'Résidence XYZ',number:'02/06',alt:'Enfilade de pièces lumineuses, parquet et murs de brique'},
+ {image:'slide-4.png',name:'Résidence XYZ',number:'05/06',alt:'Axonométrie éclatée en noir et blanc'},
+ {image:'slide-5.png',name:'Maison Casa Home',number:'11/14',alt:'Intérieur avec escalier, colonnes claires et menuiserie en bois'},
+ {image:'slide-6.png',name:'Projet Sainte-Chose',number:'04/10',alt:'Détail d’une façade en briques saillantes'}
 ];
 const entries=Array.from({length:33},()=>({slide:0,name:'475 Grande-Allée, Qc',type:'Résidentiel',status:'Complété',start:'2021',end:'2025'}));
 const thumbs=[{image:'stairs.png',slide:0,alt:'Escalier courbe en bois, balustres et murs de brique'},{image:'facade.png',slide:1,alt:'Maison de brique rouge dans un jardin automnal'},{image:'survol-2.jpg',y:'10%',alt:'Rangée de maisons victoriennes'},{image:'survol-3.png',alt:'Axonométrie éclatée en noir et blanc'},{image:'residence.png',slide:2,alt:'Enfilade de pièces lumineuses, parquet et murs de brique'},{image:'survol-5.jpg',alt:'Bâtiment vitré à structure rouge parmi les arbres'},{image:'survol-6.jpg',y:'53.5%',alt:'Escalier extérieur dans la verdure'},{image:'survol-7.jpg',alt:'Intérieur blanc, porte et fenêtre'}];
@@ -13,7 +14,7 @@ let current=0,timer=null,page='accueil';
 function head(){const h=document.querySelector('header');h.hidden=page==='accueil';h.classList.toggle('always',page==='index'||page==='survol')}
 function menu(o){document.querySelector('header').classList.toggle('open',o);document.querySelector('.mark').setAttribute('aria-expanded',String(o))}
 document.querySelector('.mark').onclick=()=>menu(!document.querySelector('header').classList.contains('open'));
-function sync(){document.querySelectorAll('.slide').forEach((el,j)=>el.setAttribute('aria-hidden',String(j!==current)));document.querySelector('#image-number').textContent=projects[current].number;document.querySelector('#project-name').textContent=projects[current].name;document.querySelector('#position').textContent=String(current+1).padStart(2,'0')+' / 05';head()}
+function sync(){document.querySelectorAll('.slide').forEach((el,j)=>el.setAttribute('aria-hidden',String(j!==current)));document.querySelector('#image-number').textContent=projects[current].number;document.querySelector('#project-name').textContent=projects[current].name;document.querySelector('#position').textContent=String(current+1).padStart(2,'0')+' / 06';head()}
 function show(i,smooth=true){current=(i+projects.length)%projects.length;slides.scrollTo({left:current*slides.clientWidth,behavior:smooth?'smooth':'instant'});sync()}
 const seen=new IntersectionObserver(es=>es.forEach(e=>{const j=[...slides.children].indexOf(e.target);if(e.isIntersecting&&j!==current){current=j;sync()}}),{root:slides,threshold:.5});[...slides.children].forEach(el=>seen.observe(el));
 function stop(){clearInterval(timer);timer=null;document.querySelector('#play').textContent='Lecture';document.querySelector('#play').setAttribute('aria-label','Lancer le diaporama')}
