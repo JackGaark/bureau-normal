@@ -361,15 +361,15 @@ nav a[aria-current=page]:after {
   left: 19.72%;
   top: 23.41%;
   width: 13.2%;
-  animation: blink 4s steps(1, end) infinite;
+  animation: blink 6s steps(1, end) infinite;
 }
 
 @keyframes blink {
-  0%, 96%, 100% {
+  0%, 100% {
     opacity: 1;
   }
 
-  92% {
+  50% {
     opacity: 0;
   }
 }
@@ -730,9 +730,5 @@ main > section {
   *:not(.slides, #accueil, nav a) {
     scroll-behavior: auto !important;
     transition: none !important;
-  }
-
-  .emblem .eye {
-    animation: none;
   }
 }
